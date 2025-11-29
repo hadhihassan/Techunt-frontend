@@ -13,7 +13,7 @@ const useStripePayment = () => {
     const handlePayment = async (id: string,) => {
         try {
             setLoading(true);
-            const stripe = await loadStripe("pk_test_51OoPKwSErGknJRsEdI0czOQw3S3KCHWzp9wW1k7DvssxEw14hbO68x19sz1elAeKcpEevg3PEbjlLLsnqPXuEHbA00exB43qKm");
+            const stripe = await loadStripe(import.meta.env.VITE_STRIP_PUBLISHABLE_KEY);
             makePayment(id)
                 .then(async (res) => {
                     await stripe?.redirectToCheckout({
@@ -29,7 +29,7 @@ const useStripePayment = () => {
     const paymentToTalent = async (talentId: string, amount: number) => {
         try {
             setLoading(true);
-            const stripe = await loadStripe("pk_test_51OoPKwSErGknJRsEdI0czOQw3S3KCHWzp9wW1k7DvssxEw14hbO68x19sz1elAeKcpEevg3PEbjlLLsnqPXuEHbA00exB43qKm");
+            const stripe = await loadStripe(import.meta.env.VITE_STRIP_PUBLISHABLE_KEY);
             makePaymentToBank(talentId, amount)
                 .then(async (res) => {
                     await stripe?.redirectToCheckout({
@@ -46,7 +46,7 @@ const useStripePayment = () => {
     const subscriptionPayment = async (role: string, planId: string, amount: number) => {
         try {
             setLoading(true);
-            const stripe = await loadStripe("pk_test_51OoPKwSErGknJRsEdI0czOQw3S3KCHWzp9wW1k7DvssxEw14hbO68x19sz1elAeKcpEevg3PEbjlLLsnqPXuEHbA00exB43qKm");
+            const stripe = await loadStripe(import.meta.env.VITE_STRIP_PUBLISHABLE_KEY);
             const session = await makePaymentToPlan(role, planId, amount);
             await stripe?.redirectToCheckout({
                 sessionId: session.data?.data
