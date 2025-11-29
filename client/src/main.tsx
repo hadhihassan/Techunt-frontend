@@ -7,7 +7,6 @@ import { MyContextProvider } from './context/myContext.tsx'
 import store, { persistor } from './redux/store.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  // <React.StrictMode>
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <MyContextProvider>
@@ -15,6 +14,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       </MyContextProvider>
     </PersistGate>
   </Provider>
-  // </React.StrictMode>,
 )
 
